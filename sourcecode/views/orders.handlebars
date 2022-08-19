@@ -1,0 +1,64 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+<title>Digital PCs Customers</title>
+<link rel="stylesheet" href="style.css">
+{{!Links to the other pages}}
+    <h1>Create/Read/Delete Orders</h1>
+    <ul>
+      <li><a class="active" href="/">Home</a></li>
+      <li><a href="/customers">Customers</a></li>
+      <li><a href="/orders">Orders</a></li>
+      <li><a href="/orderDetails">OrderDetails</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/manufacturers">Manufacturers</a></li>
+    </ul>
+{{!Allows you to add an order}}
+<h3>Add New Order:</h3>
+<form id="addorder" action="/orders" method="post">
+    CustomerID: <input type="number" name="customerID"><br>
+    Items Ordered: <input type="number" name="itemsOrdered"><br>
+    orderDate: <input type="date" name="orderDate"><br>
+    orderTime: <input type ="time" name="orderTime"><br>
+    orderTotal: <input type="number" name="orderTotal"><br>
+    <input type="submit" value="Submit">
+ </form>
+<br/>
+{{!Allows you to delete an order}}
+<h3>Delete Order:</h3>
+<form id="deleteorder" action="/deleteorder" method="post">
+    orderNumber: <select name="orderNumber"> 
+        {{#each orders}}
+        <option value="{{orderNumber}}">{{orderNumber}}</option>
+        {{/each}}
+    </select><br>   
+    <input type="submit" value="Submit">
+ </form>
+<br/>
+{{!Returns the current list of orders}}
+<h3>Current Orders:</h3>
+<table>
+    <thead> 
+        <th>orderNumber</th>
+        <th>customerID</th> 
+        <th>itemsOrdered</th> 
+        <th>orderDate</th>
+        <th>orderTime</th>
+        <th>orderTotal</th>   
+    </thead> 
+    <tbody>
+        {{#each orders}} 
+        <tr>
+            <td>{{orderNumber}}</td>
+            <td>{{customerID}}</td> 
+            <td>{{itemsOrdered}}</td> 
+            <td>{{orderDate}}</td> 
+            <td>{{orderTime}}</td>
+            <td>{{orderTotal}}</td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
+</html>
+

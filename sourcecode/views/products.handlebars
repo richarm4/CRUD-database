@@ -1,0 +1,47 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+{{!Links to the other pages}}
+<link rel="stylesheet" href="style.css">
+    <h1>Create/Read Products</h1>
+    <ul>
+      <li><a class="active" href="/">Home</a></li>
+      <li><a href="/customers">Customers</a></li>
+      <li><a href="/orders">Orders</a></li>
+      <li><a href="/orderDetails">OrderDetails</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/manufacturers">Manufacturers</a></li>
+    </ul>
+{{!Allows for user to add products with an input}}
+<h3>Add New Products:</h3>
+<form id="addproduct" action="/products" method="post">
+    UPC: <input type="number" name="UPC"><br>
+    SKU: <input type="number" name="SKU"><br>
+    Product Stock: <input type="number" name="productStock"><br>
+    Product Name: <input type="text" name="productName"><br>
+    <input type="submit" value="Submit">
+ </form>
+<br/>
+{{!Lists the current available products}}
+<h3>Current Products</h3>
+<table>
+    <thead> 
+        <th>UPC</th>
+        <th>SKU</th> 
+        <th>productStock</th> 
+        <th>productName</th> 
+    </thead> 
+    <tbody>
+        {{#each products}} 
+        <tr>
+            <td>{{UPC}}</td>
+            <td>{{SKU}}</td> 
+            <td>{{productStock}}</td> 
+            <td>{{productName}}</td> 
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
+</html>
+

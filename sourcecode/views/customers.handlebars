@@ -1,0 +1,81 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+
+<title>Digital PCs Customers</title>
+<link rel="stylesheet" href="style.css">
+{{!Links to other pages}}
+    <h1>Create/Read/Update/Delete Customers</h1>
+    <ul>
+      <li><a class="active" href="/">Home</a></li>
+      <li><a href="/customers">Customers</a></li>
+      <li><a href="/orders">Orders</a></li>
+      <li><a href="/orderDetails">OrderDetails</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/manufacturers">Manufacturers</a></li>
+    </ul>
+{{!Allows you to add a customer}}
+<h3>Add New Customers:</h3>
+<form id="addcustomer" action="/customers" method="post">
+    First Name: <input type="text" name="Fname"><br>
+    Last Name: <input type="text" name="Lname"><br>
+    Customer Email: <input type="text" name="customerEmail"><br>
+    Customer Address: <input type="text" name="customerAddress"><br>
+    Customer Phone: <input type="text" name="customerPhone"><br>
+    <input type="submit" value="Submit">
+ </form>
+<br/>
+{{!Allows you to update a customer entry}}
+<h3>Update Customer:</h3>
+<form id="updatecustomer" action="/updatecustomer" method="post">
+        CustomerID: <select name="customerID"> 
+        {{#each customers}}
+        <option value="{{customerID}}">{{customerID}}</option>
+        {{/each}}
+    </select><br>
+    First Name: <input type="text" name="Fname"><br>
+    Last Name: <input type="text" name="Lname"><br>
+    Customer Email: <input type="text" name="customerEmail"><br>
+    Customer Address: <input type="text" name="customerAddress"><br>
+    Customer Phone: <input type="text" name="customerPhone"><br>
+    <input type="submit" value="Submit">
+ </form>
+<br/>
+{{!Allows you to delete a customer entry via a dropdown menu}}
+<h3>Delete Customer:</h3>
+<form id="deletecustomer" action="/deletecustomer" method="post">
+    CustomerID: <select name="customerID"> 
+        {{#each customers}}
+        <option value="{{customerID}}">{{customerID}}</option>
+        {{/each}}
+    </select><br>
+    <input type="submit" value="Submit">
+ </form>
+<br/>
+{{!List of current customers}}
+<h3>Current Customers:</h3>
+<table>
+    <thead> 
+        <th>customerID</th>
+        <th>First Name</th> 
+        <th>Last Name</th> 
+        <th>Customer Email</th>
+        <th>Customer Address</th>
+        <th>Customer Phone</th>   
+    </thead> 
+    <tbody>
+        {{#each customers}} 
+        <tr>
+            <td>{{customerID}}</td>
+            <td>{{Fname}}</td> 
+            <td>{{Lname}}</td> 
+            <td>{{customerEmail}}</td> 
+            <td>{{customerAddress}}</td>
+            <td>{{customerPhone}}</td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
+</html>
+

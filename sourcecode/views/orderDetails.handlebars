@@ -1,0 +1,41 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+<link rel="stylesheet" href="style.css">
+    <h1>Create/Read OrderDetails</h1>
+    {{!Links to other pages}}
+    <ul>
+      <li><a class="active" href="/">Home</a></li>
+      <li><a href="/customers">Customers</a></li>
+      <li><a href="/orders">Orders</a></li>
+      <li><a href="/orderDetails">OrderDetails</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/manufacturers">Manufacturers</a></li>
+    </ul>
+{{!Allows you to add an order details entry}}
+<h3>Add New Order Details:</h3>
+<form id="addorderDetails" action="/orderDetails" method="post">
+    orderNumber: <input type="number" name="orderNumber"><br>
+    SKU: <input type="number" name="SKU"><br>
+    <input type="submit" value="Submit">
+ </form>
+<br/>
+{{!Lists the current list of order details entries}}
+<h3>Current Order Details:</h3>
+<table>
+    <thead> 
+        <th>orderNumber</th>
+        <th>SKU</th> 
+    </thead> 
+    <tbody>
+        {{#each orderDetails}} 
+        <tr>
+            <td>{{orderNumber}}</td>
+            <td>{{SKU}}</td> 
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
+</html>
+

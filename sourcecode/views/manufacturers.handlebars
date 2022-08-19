@@ -1,0 +1,46 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+<link rel="stylesheet" href="style.css">
+    <h1>Create/Read Manufacturers</h1>
+    {{!Links to other pages}}
+    <ul>
+      <li><a class="active" href="/">Home</a></li>
+      <li><a href="/customers">Customers</a></li>
+      <li><a href="/orders">Orders</a></li>
+      <li><a href="/orderDetails">OrderDetails</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/manufacturers">Manufacturers</a></li>
+    </ul>
+{{!Allows you to add new manufacturers}}
+<h3>Add New Manufacturers:</h3>
+<form id="addmanufacturer" action="/manufacturers" method="post">
+    Manufacturer Email: <input type="text" name="manufacturerEmail"><br>
+    Manufacturer Address: <input type="text" name="manufacturerAddress"><br>
+    Manufacturer Phone: <input type="text" name="manufacturerPhone"><br>
+    <input type="submit" value="Submit">
+ </form>
+<br/>
+{{!Returns the current list of manufacturers}}
+<h3>Current Manufacturers:</h3>
+<table>
+    <thead> 
+        <th>manufacturerID</th>
+        <th>manufacturerEmail</th> 
+        <th>manufacturerAddress</th> 
+        <th>manufacturerPhone</th> 
+    </thead> 
+    <tbody>
+        {{#each manufacturers}} 
+        <tr>
+            <td>{{manufacturerID}}</td>
+            <td>{{manufacturerEmail}}</td> 
+            <td>{{manufacturerAddress}}</td> 
+            <td>{{manufacturerPhone}}</td> 
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
+</html>
+
